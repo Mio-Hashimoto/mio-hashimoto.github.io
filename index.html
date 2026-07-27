@@ -151,7 +151,11 @@
     text-transform:uppercase;
     color:var(--muted);
     margin:0 0 12px 2px;
+    display:flex;
+    align-items:center;
+    gap:7px;
   }
+  .section-title svg{width:14px; height:14px; margin-bottom:-1px;}
 
   /* ---------- link tiles (Start-menu style) ---------- */
   .links{
@@ -267,6 +271,7 @@
   }
   .badge-admin{background:rgba(255,134,184,0.16); color:var(--pink); border:1px solid rgba(255,134,184,0.35);}
   .badge-mod{background:rgba(92,214,255,0.14); color:var(--cyan); border:1px solid rgba(92,214,255,0.35);}
+  .badge-supporter{background:rgba(155,123,255,0.15); color:var(--purple); border:1px solid rgba(155,123,255,0.35);}
   .badge-private{background:rgba(255,255,255,0.08); color:var(--muted); border:1px solid rgba(255,255,255,0.18);}
 
   .invite-btn{
@@ -290,6 +295,11 @@
   .invite-btn:hover{background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.3);}
   .invite-btn:active{transform:scale(0.94);}
   .invite-btn svg{width:11px;height:11px;flex-shrink:0;}
+
+  .invite-btn.is-static {
+    color: var(--muted);
+    pointer-events: none;
+  }
 
   .lock-icon{color:var(--muted); flex-shrink:0; display:flex;}
   .lock-icon svg{width:14px;height:14px;}
@@ -354,16 +364,17 @@
   </section>
 
   <section class="servers" aria-label="Discord servers">
-    <h2 class="section-title">Discord Servers</h2>
+    <h2 class="section-title">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.32 4.56A10.64 10.64 0 0 0 17.5 3.13a13.8 13.8 0 0 0-1.82.43c-1.25.48-2.33 1.2-3.18 2.06a12.1 12.1 0 0 0-3.18-2.06 13.8 13.8 0 0 0-1.82-.43 10.64 10.64 0 0 0-2.82 1.43A12.3 12.3 0 0 0 3.68 12a13.4 13.4 0 0 0 2.24 6.32 10.8 10.8 0 0 0 6.08 3.68h.1c.4-.08.75-.26 1.06-.54a.5.5 0 0 0-.1-.82 8.5 8.5 0 0 1-4.4-2.42 10.1 10.1 0 0 1-1.5-4.24 9.6 9.6 0 0 1 .4-2.68 1 1 0 0 1 .6-.62 1 1 0 0 1 .76.06A7.4 7.4 0 0 0 12 13.1a7.4 7.4 0 0 0 3.12-1.48 1 1 0 0 1 .76-.06 1 1 0 0 1 .6.62 9.6 9.6 0 0 1 .4 2.68 10.1 10.1 0 0 1-1.5 4.24 8.5 8.5 0 0 1-4.4 2.42.5.5 0 0 0-.1.82c.3.28.65.46 1.05.54h.1a10.8 10.8 0 0 0 6.08-3.68A13.4 13.4 0 0 0 20.32 12a12.3 12.3 0 0 0-1.1-4.56ZM9.88 14.8a1.8 1.8 0 0 1-1.76-1.8A1.8 1.8 0 0 1 9.88 11.2a1.8 1.8 0 0 1 1.76 1.8 1.8 1.8 0 0 1-1.76 1.8Zm4.24 0a1.8 1.8 0 0 1-1.76-1.8 1.8 1.8 0 0 1 1.76-1.8 1.8 1.8 0 0 1 1.76 1.8 1.8 1.8 0 0 1-1.76 1.8Z"/></svg>
+      Discord Servers
+    </h2>
     <ul class="server-list">
       <li class="server-row">
         <span class="server-info">
-          <span class="lock-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M6 10V8a6 6 0 1 1 12 0v2h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h1Zm2 0h8V8a4 4 0 1 0-8 0v2Z" fill="currentColor"/></svg>
-          </span>
-          <span class="server-name">Vtuber Colaboration-SP</span>
+          <span class="server-name">Vtuber Colaboration</span>
+          <span class="badge badge-supporter">Supporter</span>
         </span>
-        <span class="badge badge-private">Private</span>
+        <span class="invite-btn is-static">Private</span>
       </li>
 
       <li class="server-row">
@@ -384,8 +395,8 @@
 
       <li class="server-row">
         <span class="server-info">
-          <span class="server-name">Lu Bu Liêu Xiêu</span>
-          <span class="badge badge-mod">Mod</span>
+          <span class="server-name">Lu Bu Liêu Xiêu Vtuber</span>
+          <span class="badge badge-mod">Moderator</span>
         </span>
         <a class="invite-btn" href="https://discord.gg/KwTQRpUyf2" target="_blank" rel="noopener" aria-label="Join Lu Bu Liêu Xiêu on Discord">Join <svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M17 7H8m9 0v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </li>
