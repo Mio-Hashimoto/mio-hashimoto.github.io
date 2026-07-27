@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mio Hashimoto — Bio</title>
+<meta name="theme-color" content="#0d0e16">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0b0c13;
+    --purple:#9b7bff;
+    --pink:#ff86b8;
+    --cyan:#5cd6ff;
+    --text:#f5f2fb;
+    --muted:#a9a3c4;
+    --glass:rgba(255,255,255,0.055);
+    --glass-strong:rgba(255,255,255,0.09);
+    --glass-border:rgba(255,255,255,0.14);
+    --radius-card:28px;
+    --radius-tile:16px;
+    --radius-ctrl:10px;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    min-height:100vh;
+    min-height:100dvh;
+    background:var(--bg-deep);
+    color:var(--text);
+    font-family:'Be Vietnam Pro', sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 16px;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  /* ---------- background layers ---------- */
+  .bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:
+      radial-gradient(1200px 700px at 15% 10%, rgba(155,123,255,0.28), transparent 60%),
+      radial-gradient(1000px 700px at 85% 90%, rgba(255,134,184,0.22), transparent 60%),
+      var(--bg-deep);
+  }
+  .bg-photo{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background-image:url('assets/background.jpg');
+    background-size:cover;
+    background-position:center;
+    filter:blur(38px) saturate(115%) brightness(0.55);
+    transform:scale(1.15);
+    opacity:0.9;
+  }
+  .bg-scrim{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:linear-gradient(180deg, rgba(11,12,19,0.55) 0%, rgba(11,12,19,0.78) 100%);
+  }
+  .orb{
+    position:fixed;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(155,123,255,0.35), transparent 70%);
+    filter:blur(10px);
+    z-index:-2;
+    top:-120px;
+    right:-120px;
+    animation:drift 16s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes drift{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(-30px,40px);}
+  }
+
+  /* ---------- main card (Mica window) ---------- */
+  .card{
+    width:100%;
+    max-width:420px;
+    background:var(--glass);
+    backdrop-filter:blur(28px) saturate(140%);
+    -webkit-backdrop-filter:blur(28px) saturate(140%);
+    border:1px solid var(--glass-border);
+    border-radius:var(--radius-card);
+    padding:36px 28px 30px;
+    box-shadow:0 24px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08);
+    position:relative;
+  }
+
+  .avatar-wrap{
+    width:104px;
+    height:104px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    padding:3px;
+    background:conic-gradient(from 120deg, var(--purple), var(--pink), var(--cyan), var(--purple));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .avatar{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover;
+    background:var(--bg-deep);
+    display:block;
+    border:3px solid var(--bg-deep);
+  }
+
+  .name{
+    font-family:'M PLUS Rounded 1c', sans-serif;
+    font-weight:800;
+    font-size:26px;
+    text-align:center;
+    margin:0 0 4px;
+    letter-spacing:0.2px;
+  }
+  .name span{
+    background:linear-gradient(90deg, var(--purple), var(--pink));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .tagline{
+    text-align:center;
+    color:var(--muted);
+    font-size:13.5px;
+    margin:0 0 26px;
+    font-weight:400;
+  }
+
+  .section-title{
+    font-family:'M PLUS Rounded 1c', sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 12px 2px;
+  }
+
+  /* ---------- link tiles (Start-menu style) ---------- */
+  .links{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:10px;
+    margin-bottom:28px;
+  }
+  .tile{
+    position:relative;
+    overflow:hidden;
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    border-radius:var(--radius-tile);
+    padding:16px 8px 12px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color:var(--text);
+    transition:transform .18s ease, background .18s ease, border-color .18s ease;
+  }
+  .tile:hover{
+    transform:translateY(-3px);
+    background:var(--glass-strong);
+    border-color:rgba(255,255,255,0.24);
+  }
+  .tile:active{transform:translateY(-1px) scale(0.98);}
+  .tile::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(140px circle at var(--x,50%) var(--y,50%), rgba(255,255,255,0.22), transparent 60%);
+    opacity:0;
+    transition:opacity .25s ease;
+    pointer-events:none;
+  }
+  .tile:hover::before{opacity:1;}
+  .tile-icon{
+    width:30px;
+    height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .tile-icon svg{width:100%;height:100%;}
+  .tile-label{
+    font-size:12px;
+    font-weight:500;
+    color:var(--muted);
+  }
+
+  /* ---------- discord server list ---------- */
+  .servers{margin-bottom:4px;}
+  .server-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .server-row{
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    border-radius:var(--radius-tile);
+    padding:12px 14px;
+    transition:background .18s ease, border-color .18s ease;
+  }
+  .server-row:hover{
+    background:var(--glass-strong);
+    border-color:rgba(255,255,255,0.22);
+  }
+  .server-row::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(160px circle at var(--x,50%) var(--y,50%), rgba(255,255,255,0.14), transparent 60%);
+    opacity:0;
+    transition:opacity .25s ease;
+    pointer-events:none;
+  }
+  .server-row:hover::before{opacity:1;}
+
+  .server-info{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    min-width:0;
+  }
+  .server-name{
+    font-size:14px;
+    font-weight:500;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .badge{
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:0.4px;
+    padding:3px 8px;
+    border-radius:999px;
+    flex-shrink:0;
+    white-space:nowrap;
+  }
+  .badge-admin{background:rgba(255,134,184,0.16); color:var(--pink); border:1px solid rgba(255,134,184,0.35);}
+  .badge-mod{background:rgba(92,214,255,0.14); color:var(--cyan); border:1px solid rgba(92,214,255,0.35);}
+  .badge-private{background:rgba(255,255,255,0.08); color:var(--muted); border:1px solid rgba(255,255,255,0.18);}
+
+  .invite-btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    font-weight:500;
+    color:var(--text);
+    background:rgba(255,255,255,0.08);
+    border:1px solid var(--glass-border);
+    border-radius:var(--radius-ctrl);
+    padding:7px 11px;
+    cursor:pointer;
+    flex-shrink:0;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    transition:background .15s ease, transform .1s ease, border-color .15s ease;
+    z-index:1;
+  }
+  .invite-btn:hover{background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.3);}
+  .invite-btn:active{transform:scale(0.94);}
+  .invite-btn svg{width:11px;height:11px;flex-shrink:0;}
+
+  .lock-icon{color:var(--muted); flex-shrink:0; display:flex;}
+  .lock-icon svg{width:14px;height:14px;}
+
+  footer{
+    text-align:center;
+    margin-top:22px;
+    font-size:11px;
+    color:rgba(169,163,196,0.55);
+  }
+
+  @media (max-width:380px){
+    .card{padding:28px 18px 24px;}
+    .name{font-size:22px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .orb{animation:none;}
+    .tile, .server-row, .invite-btn{transition:none;}
+  }
+
+  :focus-visible{
+    outline:2px solid var(--cyan);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="bg-photo"></div>
+<div class="bg-scrim"></div>
+<div class="orb"></div>
+
+<main class="card">
+  <div class="avatar-wrap">
+    <img class="avatar" src="assets/avatar.png" alt="Mio Hashimoto" onerror="this.style.visibility='hidden'">
+  </div>
+
+  <h1 class="name"><span>Mio Hashimoto</span></h1>
+  <p class="tagline">Vtuber fan · Gacha gamer · Discord community</p>
+
+  <section class="links" aria-label="Liên kết mạng xã hội">
+    <a class="tile" href="https://www.facebook.com/Mio.Hashimoto.Foxy" target="_blank" rel="noopener">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06C2 17.06 5.66 21.2 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.58v1.87h2.78l-.44 2.91h-2.34V22C18.34 21.2 22 17.06 22 12.06Z" fill="#f5f2fb" fill-opacity="0.92"/></svg>
+      </span>
+      <span class="tile-label">Facebook</span>
+    </a>
+    <a class="tile" href="https://github.com/Mio-Hashimoto" target="_blank" rel="noopener">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.21c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.61-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.21C22 6.58 17.52 2 12 2Z" fill="#f5f2fb" fill-opacity="0.92"/></svg>
+      </span>
+      <span class="tile-label">GitHub</span>
+    </a>
+    <a class="tile" href="https://www.youtube.com/@Mio-Hashimoto-3.141" target="_blank" rel="noopener">
+      <span class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M23.5 6.19a2.99 2.99 0 0 0-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A2.99 2.99 0 0 0 .5 6.19 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.81 2.99 2.99 0 0 0 2.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a2.99 2.99 0 0 0 2.11-2.12A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.81ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" fill="#f5f2fb" fill-opacity="0.92"/></svg>
+      </span>
+      <span class="tile-label">YouTube</span>
+    </a>
+  </section>
+
+  <section class="servers" aria-label="Discord servers">
+    <h2 class="section-title">Discord Servers</h2>
+    <ul class="server-list">
+      <li class="server-row">
+        <span class="server-info">
+          <span class="lock-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 10V8a6 6 0 1 1 12 0v2h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h1Zm2 0h8V8a4 4 0 1 0-8 0v2Z" fill="currentColor"/></svg>
+          </span>
+          <span class="server-name">Vtuber Colaboration-SP</span>
+        </span>
+        <span class="badge badge-private">Private</span>
+      </li>
+
+      <li class="server-row">
+        <span class="server-info">
+          <span class="server-name">Malfine</span>
+          <span class="badge badge-admin">Admin</span>
+        </span>
+        <a class="invite-btn" href="https://discord.gg/dDpMTJ35zk" target="_blank" rel="noopener" aria-label="Join Malfine on Discord">Join <svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M17 7H8m9 0v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </li>
+
+      <li class="server-row">
+        <span class="server-info">
+          <span class="server-name">Nikke VN</span>
+          <span class="badge badge-admin">Admin</span>
+        </span>
+        <a class="invite-btn" href="https://discord.gg/ayYkadVfmU" target="_blank" rel="noopener" aria-label="Join Nikke VN on Discord">Join <svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M17 7H8m9 0v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </li>
+
+      <li class="server-row">
+        <span class="server-info">
+          <span class="server-name">Lu Bu Liêu Xiêu</span>
+          <span class="badge badge-mod">Mod</span>
+        </span>
+        <a class="invite-btn" href="https://discord.gg/KwTQRpUyf2" target="_blank" rel="noopener" aria-label="Join Lu Bu Liêu Xiêu on Discord">Join <svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M17 7H8m9 0v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </li>
+    </ul>
+  </section>
+
+  <footer>© Mio Hashimoto</footer>
+</main>
+
+<script>
+  // Fluent "reveal highlight" — track pointer position per element
+  document.querySelectorAll('.tile, .server-row').forEach(function(el){
+    el.addEventListener('mousemove', function(e){
+      var rect = el.getBoundingClientRect();
+      el.style.setProperty('--x', (e.clientX - rect.left) + 'px');
+      el.style.setProperty('--y', (e.clientY - rect.top) + 'px');
+    });
+  });
+</script>
+
+</body>
+</html>
