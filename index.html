@@ -185,6 +185,10 @@
     border-color:rgba(255,255,255,0.24);
   }
   .tile:active{transform:translateY(-1px) scale(0.98);}
+  .tile[href=""], .tile[href="#"] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
   .tile::before{
     content:"";
     position:absolute;
@@ -343,7 +347,7 @@
   <p class="tagline">Vtuber fan · Gacha gamer · Discord community</p>
 
   <section class="links" aria-label="Liên kết mạng xã hội">
-    <a class="tile" href="https://www.facebook.com/Mio.Hashimoto.Foxy" target="_blank" rel="noopener">
+    <a class="tile" href="#" title="Tài khoản đã bị khóa">
       <span class="tile-icon">
         <svg viewBox="0 0 24 24" fill="none"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06C2 17.06 5.66 21.2 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.58v1.87h2.78l-.44 2.91h-2.34V22C18.34 21.2 22 17.06 22 12.06Z" fill="#f5f2fb" fill-opacity="0.92"/></svg>
       </span>
